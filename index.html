@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+     <link rel="icon" type="image/x-icon" href="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/OIP-C.webp" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSTI - CS2游戏人格测试</title>
+    <meta name="description" content="测出你的CS2游戏人格，看看你是突破手、狙击手还是战术大师？">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="home-page" id="home-page">
+            <div class="home-bg"></div>
+            <div class="home-content">
+                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/OIP-C.webp" alt="Logo" class="logo">
+                <h1 id="title">CSTI游戏人格测试</h1>
+                <p class="subtitle" id="subtitle">探索你的CS2游戏人格</p>
+                <p class="description" id="description">仅需3分钟，通过35道题目，发现你的游戏风格和职业选手相似度</p>
+                
+                <div class="features-preview">
+                    <div class="feature">👤 <span id="feature1">15种游戏人格</span></div>
+                    <div class="feature">⭐ <span id="feature2">职业选手匹配</span></div>
+                    <div class="feature">🏆 <span id="feature3">段位预估</span></div>
+                </div>
+                
+                <button class="start-btn" id="start-btn" onclick="startTest()">开始测试</button>
+                
+                <div class="lang-selector">
+                    <button class="lang-btn" onclick="setLanguage('zh')">简体中文</button>
+                    <button class="lang-btn" onclick="setLanguage('en')">English</button>
+                    <button class="lang-btn" onclick="setLanguage('zh_tw')">繁體中文</button>
+                </div>
+
+                <div class="home-intro">
+                    <div class="intro-section">
+                        <h3 id="intro-title-personality">👤 15种游戏人格</h3>
+                        <div class="personality-cards" id="personality-cards">
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">
+                                    <span class="personality-card-icon">⚡</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_entryFragger">突破手</h4>
+                                    <p>冲锋在前，为团队打开突破口</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #3498db, #2980b9);">
+                                    <span class="personality-card-icon">🎯</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_sniper">狙击手</h4>
+                                    <p>冷静精准，远程压制敌人</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);">
+                                    <span class="personality-card-icon">🧠</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_tactician">战术大师</h4>
+                                    <p>运筹帷幄，指挥团队走向胜利</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+                                    <span class="personality-card-icon">🛡️</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_support">支援手</h4>
+                                    <p>团队后盾，保障队友安全</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                                    <span class="personality-card-icon">🦥</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_lurker">潜伏者</h4>
+                                    <p>耐心潜伏，寻找最佳时机</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #1abc9c, #16a085);">
+                                    <span class="personality-card-icon">👻</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_camper">老六</h4>
+                                    <p>守株待兔，出其不意</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #e91e63, #c2185b);">
+                                    <span class="personality-card-icon">💥</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_rusher">莽夫</h4>
+                                    <p>勇猛无畏，正面硬刚</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #607d8b, #546e7a);">
+                                    <span class="personality-card-icon">😈</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_toxic">毒瘤</h4>
+                                    <p>激情四射，带动全场节奏</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #ff5722, #f4511e);">
+                                    <span class="personality-card-icon">😌</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_casual">休闲玩家</h4>
+                                    <p>享受游戏，开心就好</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #00bcd4, #00acc1);">
+                                    <span class="personality-card-icon">💎</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_collector">皮肤收藏家</h4>
+                                    <p>颜值即正义，皮肤大于天</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #ffc107, #ffb300);">
+                                    <span class="personality-card-icon">🏆</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_clutch">残局大师</h4>
+                                    <p>心理素质强，绝境翻盘</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #673ab7, #5e35b1);">
+                                    <span class="personality-card-icon">⚖️</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_trader">互换王</h4>
+                                    <p>稳健可靠，换血从不亏</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #4caf50, #43a047);">
+                                    <span class="personality-card-icon">😴</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_giveup">摆烂哥</h4>
+                                    <p>心态平和，输赢无所谓</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #ff9800, #f57c00);">
+                                    <span class="personality-card-icon">🤫</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_silent">沉默者</h4>
+                                    <p>沉默是金，用实力说话</p>
+                                </div>
+                            </div>
+                            <div class="personality-card">
+                                <div class="personality-card-header" style="background: linear-gradient(135deg, #9c27b0, #7b1fa2);">
+                                    <span class="personality-card-icon">🌟</span>
+                                </div>
+                                <div class="personality-card-body">
+                                    <h4 data-key="personality_allround">全能选手</h4>
+                                    <p>能力全面，胜任任何位置</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="intro-section">
+                        <h3 id="intro-title-proplayers">⭐ 职业选手匹配</h3>
+                        <div class="pro-players-grid" id="pro-players-grid">
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/donk.webp" alt="donk" class="pro-mini-img">
+                                <span class="pro-mini-name">donk</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/kennys.png" alt="kennyS" class="pro-mini-img">
+                                <span class="pro-mini-name">kennyS</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/sh1ro.webp" alt="sh1ro" class="pro-mini-img">
+                                <span class="pro-mini-name">sh1ro</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/m0nesy.webp" alt="m0NESY" class="pro-mini-img">
+                                <span class="pro-mini-name">m0NESY</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/ropz.webp" alt="ropz" class="pro-mini-img">
+                                <span class="pro-mini-name">ropz</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/niko.webp" alt="NiKo" class="pro-mini-img">
+                                <span class="pro-mini-name">NiKo</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/apEX.webp" alt="apEX" class="pro-mini-img">
+                                <span class="pro-mini-name">apEX</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/Magisk.webp" alt="Magisk" class="pro-mini-img">
+                                <span class="pro-mini-name">Magisk</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/Spinx.webp" alt="Spinx" class="pro-mini-img">
+                                <span class="pro-mini-name">Spinx</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/bLitz.webp" alt="bLitz" class="pro-mini-img">
+                                <span class="pro-mini-name">bLitz</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/flameZ.webp" alt="flameZ" class="pro-mini-img">
+                                <span class="pro-mini-name">flameZ</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/Brollan.webp" alt="Brollan" class="pro-mini-img">
+                                <span class="pro-mini-name">Brollan</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/xertioN.webp" alt="xertioN" class="pro-mini-img">
+                                <span class="pro-mini-name">xertioN</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/torzsi.webp" alt="torzsi" class="pro-mini-img">
+                                <span class="pro-mini-name">torzsi</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/Jimpphat.webp" alt="Jimpphat" class="pro-mini-img">
+                                <span class="pro-mini-name">Jimpphat</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/Senzu.webp" alt="Senzu" class="pro-mini-img">
+                                <span class="pro-mini-name">Senzu</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/mzinho.webp" alt="mzinho" class="pro-mini-img">
+                                <span class="pro-mini-name">mzinho</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/910I.webp" alt="910I" class="pro-mini-img">
+                                <span class="pro-mini-name">910I</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/Techno4K.webp" alt="Techno4K" class="pro-mini-img">
+                                <span class="pro-mini-name">Techno4K</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/kyxsan.webp" alt="kyxsan" class="pro-mini-img">
+                                <span class="pro-mini-name">kyxsan</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/TeSeS.webp" alt="TeSeS" class="pro-mini-img">
+                                <span class="pro-mini-name">TeSeS</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/kyousuke.webp" alt="kyousuke" class="pro-mini-img">
+                                <span class="pro-mini-name">kyousuke</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/magixx.webp" alt="magixx" class="pro-mini-img">
+                                <span class="pro-mini-name">magixx</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/zont1x.webp" alt="zont1x" class="pro-mini-img">
+                                <span class="pro-mini-name">zont1x</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/chopper.webp" alt="chopper" class="pro-mini-img">
+                                <span class="pro-mini-name">chopper</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/s1mple.webp" alt="s1mple" class="pro-mini-img">
+                                <span class="pro-mini-name">s1mple</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/mezii.webp" alt="mezii" class="pro-mini-img">
+                                <span class="pro-mini-name">mezii</span>
+                            </div>
+                            <div class="pro-player-mini">
+                                <img src="https://21cc.oss-cn-hongkong.aliyuncs.com/zywj/image/juese/ZywOo.webp" alt="ZywOo" class="pro-mini-img">
+                                <span class="pro-mini-name">ZywOo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="intro-section">
+                        <h3 id="intro-title-ranks">🏆 段位预估</h3>
+                        <div class="ranks-preview">
+                            <div class="rank-item">
+                                <div class="rank-hex">D</div>
+                                <span class="rank-name">&lt; 1000</span>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-hex rank-hex-plus">D+</div>
+                                <span class="rank-name">1001-1200</span>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-hex">C</div>
+                                <span class="rank-name">1201-1400</span>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-hex rank-hex-plus">C+</div>
+                                <span class="rank-name">1401-1600</span>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-hex">B</div>
+                                <span class="rank-name">1601-1800</span>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-hex rank-hex-plus">B+</div>
+                                <span class="rank-name">1801-2000</span>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-hex rank-hex-a">A</div>
+                                <span class="rank-name">2001-2200</span>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-hex rank-hex-plus rank-hex-a">A+</div>
+                                <span class="rank-name">2201-2400</span>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-hex-s">S</div>
+                                <span class="rank-name" data-key="rank_s">魔王段位</span>
+                                
+                            </div>
+                        </div><div id="copyright" class="copyright"></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="quiz-page" id="quiz-page" style="display: none;">
+            <div class="quiz-header">
+                <h2 id="quiz-title">CSTI游戏人格测试</h2>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-text" id="progress-text">已完成 <span id="answered">0</span> / <span id="total">35</span> 题</div>
+                <div class="progress-circle">
+                    <span id="progress-percent">0%</span>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+
+            <div id="questions"></div>
+
+            <button class="submit-btn" id="submit" onclick="showResult()" disabled>查看结果</button>
+        </div>
+
+        <div class="result-page" id="result-page" style="display: none;">
+            <div class="result-content">
+                <div class="result-header">
+                    <h2 class="result-type" id="result-type"></h2>
+                    <p class="result-match" id="result-match"></p>
+                </div>
+                
+                <div class="result-image" id="result-image"></div>
+                
+                <div class="result-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-accuracy"></div>
+                        <div class="stat-label" id="stat-label-accuracy">匹配度</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-speed"></div>
+                        <div class="stat-label" id="stat-label-speed">答题速度</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="rank-hex-container" id="stat-rank"></div>
+                        <div class="stat-label" id="stat-label-rank">段位预估</div>
+                    </div>
+                </div>
+
+                <div class="pro-player">
+                    <h3 id="result-pro-match">职业玩家匹配</h3>
+                    <div id="pro-player-content"></div>
+                </div>
+
+                <div class="result-desc">
+                    <h3 id="result-personality">人格解读</h3>
+                    <p id="result-desc-text"></p>
+                </div>
+
+                <div class="dimensions">
+                    <h3 id="result-dimensions-title">十五维人格评分</h3>
+                    <div class="dim-grid" id="dimensions-grid"></div>
+                </div>
+
+                <div class="encouragement">
+                    <h3 id="result-encouragement">鼓励语</h3>
+                    <div id="encouragement-text"></div>
+                </div>
+
+                <div class="note-box">
+                    <h3>友情提示</h3>
+                    <p id="funNote">本测试仅供娱乐，别拿它当诊断、面试、相亲、分手、招魂、算命或人生判决书。你可以笑，但别太当真。</p>
+                </div>
+
+                <div class="btn-group">
+                    <button class="restart-btn" id="result-restart" onclick="restart()">重新测试</button>
+                    <button class="share-btn" id="result-share" onclick="openShareModal()">分享结果</button>
+                    <button class="home-btn" id="result-home" onclick="goHome()">返回主页</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="share-modal" id="share-modal">
+            <div class="share-content">
+                <button class="close-btn" onclick="closeShareModal()">×</button>
+                <h3 id="share-title">分享测评成绩</h3>
+                
+                <div class="share-image" id="share-image"></div>
+                
+                <div class="share-preview">
+                    <h4 class="result-type" id="share-type"></h4>
+                    <p class="result-match" id="share-match"></p>
+                    <p id="share-desc"></p>
+                </div>
+                
+                <div class="share-pro-player" id="share-pro-player">
+                    <h4 id="share-pro-title">职业玩家匹配</h4>
+                    <div id="share-pro-content"></div>
+                </div>
+                
+                <div class="qrcode-section">
+                    <p id="scan-text">扫码测试</p>
+                    <div id="qrcode"></div>
+                </div>
+                
+                <div class="share-options">
+                    <div class="share-option" onclick="copyShareLink()">
+                        <span>🔗</span>
+                        <span id="copy-link-text">复制测试链接</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="copy-success" id="copy-success">复制成功！</div>
+    </div>
+
+    <div id="copyright" class="copyright"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

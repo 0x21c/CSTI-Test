@@ -15,8 +15,7 @@
 
 ### 方法一：使用 Python
 ```bash
-# 克隆仓库
-git clone https://github.com/your-username/csti-test.git
+# 解压安装包
 
 # 进入目录
 cd csti-test
